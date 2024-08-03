@@ -61,6 +61,48 @@ GROUP BY
 ORDER BY
 	valor_maximo DESC;
 
+-- Atividade 5: Junção Múltipla
+-- Descrição: Liste o nome do cliente, o veículo comprado e o valor pago, para todas as vendas.
 
-	teste
-	teste 2
+SELECT
+	c.cliente,
+	vei.tipo AS carro_comprado,
+	ven.valor_pago AS preco
+FROM clientes c
+JOIN 
+	vendas ven ON ven.id_clientes = c.id_clientes
+JOIN 
+	veiculos vei ON vei.id_veiculos = ven.id_veiculos
+ORDER BY 
+	c.cliente
+
+-- Atividade 6: Filtro com Agregação
+-- Descrição: Identifique as concessionárias que venderam mais de 5 veículos.
+
+SELECT
+	co.concessionaria,
+	COUNT(ven.*) AS total_vendas
+FROM 
+	concessionarias co
+JOIN 
+	vendas ven ON ven.id_concessionarias = co.id_concessionarias
+JOIN
+	veiculos vei ON vei.id_veiculos = ven.id_veiculos
+GROUP BY
+	co.concessionaria
+HAVING 
+	COUNT(*) > 5
+ORDER BY
+	total_vendas DESC
+
+-- Atividade 7: Consulta com ORDER BY e LIMIT
+-- Descrição: Liste os três veículos mais caros disponíveis.
+
+SELECT
+	tipo,
+	valor
+FROM 
+	veiculos
+ORDER BY
+	valor DESC
+LIMIT 3
