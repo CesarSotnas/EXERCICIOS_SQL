@@ -106,3 +106,7 @@ FROM
 ORDER BY
 	valor DESC
 LIMIT 3
+
+-- Atividade 8: Consulta com Datas
+-- Descrição: Selecione todos os veículos adicionados no último mês.
+
