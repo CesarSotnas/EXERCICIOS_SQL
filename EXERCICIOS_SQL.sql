@@ -110,3 +110,14 @@ LIMIT 3
 -- Atividade 8: Consulta com Datas
 -- Descrição: Selecione todos os veículos adicionados no último mês.
 
+SELECT
+	vei.tipo,
+	ven.data_atualizacao
+FROM
+	veiculos vei
+JOIN
+	vendas ven ON ven.id_veiculos = vei.id_veiculos
+WHERE 
+	ven.data_atualizacao >= CURRENT_DATE - INTERVAL '1 MONTH'
+ORDER BY
+	ven.data_atualizacao ASC
