@@ -121,3 +121,17 @@ WHERE
 	ven.data_atualizacao >= CURRENT_DATE - INTERVAL '1 MONTH'
 ORDER BY
 	ven.data_atualizacao ASC
+
+-- Atividade 9: Junção Externa
+-- Descrição: Liste todas as cidades e qualquer concessionária nelas, se houver.
+
+SELECT * FROM cidades
+SELECT * FROM concessionarias
+
+SELECT
+	ci.cidade,
+	co.concessionaria
+FROM 
+	cidades ci
+FULL JOIN
+	concessionarias co ON co.id_cidades = ci.id_cidades
