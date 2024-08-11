@@ -125,9 +125,6 @@ ORDER BY
 -- Atividade 9: Junção Externa
 -- Descrição: Liste todas as cidades e qualquer concessionária nelas, se houver.
 
-SELECT * FROM cidades
-SELECT * FROM concessionarias
-
 SELECT
 	ci.cidade,
 	co.concessionaria
@@ -135,3 +132,22 @@ FROM
 	cidades ci
 FULL JOIN
 	concessionarias co ON co.id_cidades = ci.id_cidades
+
+-- Atividade 10: Consulta com Várias Condições
+-- Descrição: Encontre clientes que compraram veículos 'SUV Premium Híbrida' ou 
+-- veículos com valor acima de 60.000,00.
+
+SELECT
+	cli.cliente,
+	vei.tipo,
+	ven.valor_pago
+FROM
+	clientes cli
+JOIN
+	vendas ven ON ven.id_clientes = cli.id_clientes
+JOIN
+	veiculos vei ON vei.id_veiculos = ven.id_veiculos
+WHERE
+	ven.valor_pago > 60000.00 OR vei.tipo = 'SUV Premium Híbrida'
+ORDER BY
+	ven.valor_pago DESC
