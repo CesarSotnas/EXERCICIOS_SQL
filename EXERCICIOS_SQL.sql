@@ -1,4 +1,4 @@
--- tabelas:
+-- tabelas utilizadas:
 -- cidades
 -- clientes
 -- concessionarias
